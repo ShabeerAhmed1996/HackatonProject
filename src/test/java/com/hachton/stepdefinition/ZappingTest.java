@@ -26,31 +26,16 @@ public class ZappingTest {
     @BeforeMethod
     public void setup(){
         String proxyServerUrl=ZAP_ADDRESS+":"+ZAP_PORT;
-        //ChromeOptions chromeOptions = new ChromeOptions();
         Proxy proxy = new Proxy();
         proxy.setHttpProxy(proxyServerUrl);
         proxy.setSslProxy(proxyServerUrl);
-//        chromeOptions.setAcceptInsecureCerts(true);
-//        chromeOptions.setProxy(proxy);
-
-        WebDriverManager.chromedriver().setup();
-        //driver=new ChromeDriver(chromeOptions);
         FirefoxOptions firefoxOptions=new FirefoxOptions();
         firefoxOptions.setAcceptInsecureCerts(true);
         firefoxOptions.setHeadless(true);
         firefoxOptions.setProxy(proxy);
-
         WebDriverManager.firefoxdriver().setup();
         api=new ClientApi(ZAP_ADDRESS,ZAP_PORT,ZAP_API);
-
-
         driver=new FirefoxDriver(firefoxOptions);
-
-//        WebDriverManager.firefoxdriver().setup();
-//        FirefoxOptions firefoxOptions = new FirefoxOptions();
-//        firefoxOptions.setAcceptInsecureCerts(true);
-//        firefoxOptions.setHeadless(true);
-//        driver=new FirefoxDriver(firefoxOptions);
     }
 
     @Test
@@ -88,10 +73,6 @@ public class ZappingTest {
 
             driver.quit();
         }
-
-//        if (driver !=null){
-//            driver.quit();
-//        }
     }
 
 
